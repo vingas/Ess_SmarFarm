@@ -19,6 +19,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/login', 'API\AuthController@login')->name('login');
 Route::post('/register', 'API\AuthController@register');
+Route::get('/hello', 'SensorsController@hello');
+Route::post('/hello2', 'SensorsController@hello2');
+Route::get('/getThreshold/{mac}', 'SensorsController@getThreshold');
+Route::get('getThresholdById/{id}', 'SensorsController@getThresholdById');
+Route::post('setThreshold', 'SensorsController@setThreshold');
+Route::post('setData', 'SensorsController@setData');
+Route::get('getDataSensors', 'SensorsController@getDataSensors');
+Route::get('getUsers', 'SensorsController@getUsers');
+
 
 Route::middleware('auth:api')->group(function () {
     Route::get('/get-user', 'API\AuthController@getUser');

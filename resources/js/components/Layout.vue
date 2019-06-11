@@ -1,7 +1,9 @@
 <template>
-  <div>
-    <router-view></router-view>
-  </div>
+  <v-container fluid>
+    <v-fade-transition mode="out-in">
+      <router-view></router-view>
+    </v-fade-transition>
+  </v-container>
 </template>
 
 <script>

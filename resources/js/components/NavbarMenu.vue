@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" app fixed clipped-right>
       <button
         class="navbar-toggler"
         type="button"
@@ -12,7 +12,11 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <div
+        class="collapse navbar-collapse"
+        id="navbarTogglerDemo01"
+        style="display: flex; justify-content: space-around"
+      >
         <router-link class="navbar-brand" to="/">SmartFarm</router-link>
         <form class="form-inline my-2 my-lg-0 nav-item">
           <div v-if="user == null">

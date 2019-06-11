@@ -11,6 +11,14 @@
           v-model.trim="$v.name.$model"
         >
       </div>
+      <div class="form-group" :class="{ 'form-group--error': $v.mac.$error }">
+        <input
+          class="form__input form-control"
+          required="true"
+          placeholder="Mac"
+          v-model.trim="$v.mac.$model"
+        >
+      </div>
 
       <div class="form-group" :class="{ 'form-group--error': $v.email.$error }">
         <input
@@ -47,6 +55,7 @@
       </div>
 
       <button class="btn btn-primary" type="submit" :disabled="submitStatus === 'PENDING'">Save</button>
+      <button class="btn btn-primary" @click="back">Cancel</button>
       <div class="error" v-if="!$v.email.email">Email formart wrong example@example.pt</div>
 
       <p class="typo__p" v-if="submitStatus === 'ERROR'">Please fill the field correctly.</p>
@@ -61,6 +70,7 @@ export default {
   data: function() {
     return {
       submitStatus: null,
+      mac: "",
       name: "",
       email: "",
       type: "",
@@ -77,9 +87,15 @@ export default {
     },
     type: {
       required
+    },
+    mac: {
+      required
     }
   },
   methods: {
+    back() {
+      this.$router.push("/sensors");
+    },
     submit() {
       console.log("submit!");
       this.$v.$touch();
@@ -99,7 +115,8 @@ export default {
         name: this.name,
         email: this.email,
         password: this.password,
-        type: this.type
+        type: this.type,
+        mac: this.mac
       };
       axios
         .post("api/register", user)

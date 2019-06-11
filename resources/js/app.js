@@ -12,6 +12,8 @@ import Vuetify from 'vuetify';
 import Vuelidate from 'vuelidate';
 import Toasted from 'vue-toasted';
 import store from './vuex.js';
+// index.js or main.js
+import 'vuetify/dist/vuetify.min.css'
 
 
 window.Vue = require('vue');
@@ -32,6 +34,8 @@ Vue.use(Toasted);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 Vue.component('vue-layout', require('./components/Layout.vue').default);
 Vue.component('navbarmenu', require('./components/NavbarMenu.vue').default);
+Vue.component("dashboarda", require("./components/admin/dashboard.vue").default);
+Vue.component("dashboard", require("./components/user/dashboard.vue").default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

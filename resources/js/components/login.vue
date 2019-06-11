@@ -1,4 +1,5 @@
 <template>
+
   <div id="login" class="container col-lg-4">
     <form @submit.prevent="submit" class="contact-form">
       <h3 class="text-center">Sign in</h3>

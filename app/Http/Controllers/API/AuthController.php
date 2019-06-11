@@ -9,11 +9,12 @@ use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use App\rpi3;
 
 define('YOUR_SERVER_URL', 'http://ess.ess');
 // Check "oauth_clients" table for next 2 values:
-define('CLIENT_ID', '1');
-define('CLIENT_SECRET', 'UFuA3GCkW3ZmT2gqTESRKc2LPHGDKb3XnHTodJju');
+define('CLIENT_ID', '2');
+define('CLIENT_SECRET', 'gsmh4JHEqPMXADooPLc6bIWnthRcKEMbRqcbqWP3');
 
 class AuthController extends Controller
 {
@@ -23,7 +24,8 @@ class AuthController extends Controller
             'email' => 'required|email|unique:users,email',
             'name' => 'required',
             'password' => 'required',
-            'type' => 'required'
+            'type' => 'required',
+            'mac' => 'required'
         ]);
 
         $user = new User();
@@ -33,6 +35,13 @@ class AuthController extends Controller
         $user->password = bcrypt($data['password']);
 
         $user->save();
+        $rpi3 = new rpi3();
+
+        $rpi3->mac_addr = $data['mac'];
+        $rpi3->threshold = 500;
+        $rpi3->user_id = $user->id;
+        $rpi3->save();
+
 
         return response()->json(new UserResource($user), 201);
     }
