@@ -26,6 +26,9 @@ Route::get('getThresholdById/{id}', 'SensorsController@getThresholdById');
 Route::post('setThreshold', 'SensorsController@setThreshold');
 Route::post('setData', 'SensorsController@setData');
 Route::get('getDataSensors', 'SensorsController@getDataSensors');
+Route::get('getDataSensorsStats/{sensor}', 'SensorsController@getDataSensorsStats');
+
+
 Route::get('getUsers', 'SensorsController@getUsers');
 
 

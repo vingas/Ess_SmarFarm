@@ -24,7 +24,7 @@ class SensorsController extends Controller
         $dados->id_rasp = $rasp->id;
         $dados->save();
 
-        return response()->json("est um conas da mae");
+        return response()->json("this is success");
     }
     public function getThreshold($mac)
     {
@@ -63,7 +63,7 @@ class SensorsController extends Controller
         $dados->id_rasp = $rasp->id;
         $dados->save();
 
-        return response()->json("est um conas da mae");
+        return response()->json("setData");
     }
     public function getDataSensors()
     {
@@ -77,6 +77,19 @@ class SensorsController extends Controller
 
         return response()->json($dados, 200);
     }
+
+    public function getDataSensorsStats($sensor)
+    {
+
+        if ($sensor == "Sensor de humidade") {
+            return response()->json([dado::get()->pluck('humidade')->toArray(), dado::get()->pluck('updated_at')->toArray()]);
+        }
+        if ($sensor == "Sensor de percipitacao") {
+            return response()->json([dado::get()->pluck('percipitacao')->toArray(), dado::get()->pluck('updated_at')->toArray()]);
+        }
+    }
+
+
     public function getUsers()
     {
         $users = User::all()->pluck('email');

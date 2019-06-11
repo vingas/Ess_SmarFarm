@@ -17,7 +17,7 @@
         id="navbarTogglerDemo01"
         style="display: flex; justify-content: space-around"
       >
-        <router-link class="navbar-brand" to="/">SmartFarm</router-link>
+        <router-link class="navbar-brand" to="/sensors">SmartFarm</router-link>
         <form class="form-inline my-2 my-lg-0 nav-item">
           <div v-if="user == null">
             <router-link class="btn btn-outline-success my-2 my-sm-0" to="/login">Login</router-link>
